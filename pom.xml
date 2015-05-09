@@ -40,7 +40,7 @@
      <sdk>
       <!-- platform or api level (api level 4 = platform 1.6) -->
       <platform>8</platform>
-	  <path>/Users/Neimad/Documents/AndroidProjects/adt-bundle-mac-x86_64-20140702/sdk</path>
+	  <path>/home/hussam/Bureau/Lien vers Prog/Android/adt-bundle/sdk</path>
       
      </sdk>
     </configuration>
