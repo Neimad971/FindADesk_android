@@ -4,5 +4,20 @@
     <string name="app_name">FindADesk</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <!-- Main Activity -->
+    <string name="search_btn">Rechercher</string>
+    
+    <string-array name="product_type_data">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+    </string-array>
+    
+    
+    <!-- Home Activity -->
+    <string name="reservations_btn">Mes réservations</string>
+    <string name="find_loc_btn">Trouver un emplacement</string>
 
 </resources>

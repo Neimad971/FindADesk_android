@@ -1,20 +1,15 @@
 package fr.esgi.findadesk;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import fr.esgi.utils.JSONParser;
-
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
-public class MainActivity extends ActionBarActivity {
+public class FindLocationActivity extends ActionBarActivity {
 
+	/*
 	// URL to get JSON Array
 	private static String url = "http://localhost:8080/users";
 
@@ -28,13 +23,42 @@ public class MainActivity extends ActionBarActivity {
 	private static final String TAG_PWD = "password";
 
 	JSONArray user = null;
+	*/
+	
+	private Spinner produtSpinner;
+	private Spinner locationSpinner;
+	private Spinner fromSpinner;
+	private Spinner minSeatsSpinner;
+	private Spinner minPriceSpinner;
+	private Spinner maxPriceSpinner;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		setContentView(R.layout.activity_main);
-		new AsyncTaskParseJson().execute();
+		
+		setContentView(R.layout.find_location_activity);
+		
+		produtSpinner = (Spinner) findViewById(R.id.product_type_spinner);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.product_type_data, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		produtSpinner.setAdapter(adapter);
+		
+		locationSpinner = (Spinner) findViewById(R.id.location_spinner);
+		locationSpinner.setAdapter(adapter);
+		
+		fromSpinner = (Spinner) findViewById(R.id.from_spinner);
+		fromSpinner.setAdapter(adapter);
+		
+		minSeatsSpinner = (Spinner) findViewById(R.id.minimum_seats_spinner);
+		minSeatsSpinner.setAdapter(adapter);
+		
+		minPriceSpinner = (Spinner) findViewById(R.id.min_price_spinner);
+		minPriceSpinner.setAdapter(adapter);
+		
+		maxPriceSpinner = (Spinner) findViewById(R.id.max_price_spinner);
+		maxPriceSpinner.setAdapter(adapter);
+		
+		//new AsyncTaskParseJson().execute();
 	}
 
 	@Override
@@ -48,7 +72,7 @@ public class MainActivity extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
+		// as you specify a parent activity in AndroidManifest.xml
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
@@ -56,8 +80,7 @@ public class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	// you can make this class as another java file so it will be separated from
-	// your main activity.
+	/*
 	public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
 
 		final String TAG = "MainActivity.java";
@@ -96,5 +119,5 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(String strFromDoInBg) {
 		}
-	}
+	}*/
 }
