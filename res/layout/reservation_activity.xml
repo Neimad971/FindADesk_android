@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:baselineAligned="false"
+    android:weightSum="4" >
+    
+
+    <LinearLayout 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:baselineAligned="false"
+    android:layout_weight="1.5"
+    android:weightSum="2" >
+    
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        
+        <TextView
+        android:id="@+id/TypeWorkspace"
+        android:text="@string/type_workspace"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"></TextView>
+        
+        <TextView
+        android:id="@+id/AdresseWorkspace"
+        android:text="@string/adresse_workspace"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/TypeWorkspace"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"></TextView>
+             
+        <TextView
+        android:id="@+id/SeatsNumberWorkspace"
+        android:text="@string/seats_number_workspace"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/AdresseWorkspace"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"></TextView>
+        
+        <TextView
+        android:id="@+id/EmailAdminWorkspace"
+        android:text="@string/email_admin_workspace"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/SeatsNumberWorkspace"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"></TextView>
+        
+        <TextView
+        android:id="@+id/PriceWorkspace"
+        android:text="@string/prix"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/EmailAdminWorkspace"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"></TextView>
+        
+
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        
+        <TextView 
+        android:id="@+id/TypeWorkspaceRes"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"/>
+        
+        <TextView
+        android:id="@+id/AdresseWorkspaceRes"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/TypeWorkspaceRes"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"/>
+        
+        <TextView
+        android:id="@+id/SeatsNumberWorkspaceRes"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/AdresseWorkspaceRes"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"/>
+        
+        <TextView
+        android:id="@+id/EmailAdminWorkspaceRes"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/SeatsNumberWorkspaceRes"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"/>
+        
+        <TextView
+        android:id="@+id/PriceWorkspaceRes"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/EmailAdminWorkspaceRes"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"/>
+        
+
+        
+
+    </RelativeLayout>
+    </LinearLayout>
+ 
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="2.5"
+	    android:orientation="vertical" >
+    
+	    
+	            <TextView
+        android:id="@+id/DescriptionWorkspace"
+        android:text="@string/description"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="center_horizontal"></TextView>
+	            
+	            <TextView
+        android:id="@+id/DescriptionWorkspaceRes"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:singleLine="false"
+        android:maxLines="5"
+        android:layout_marginBottom="150dp"/>
+	            
+        <Button
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:onClick="BtnReserverOnClick"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/reserver_btn" />
+    </LinearLayout>
+
+</LinearLayout>

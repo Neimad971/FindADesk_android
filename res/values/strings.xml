@@ -16,8 +16,27 @@
     </string-array>
     
     
+    <!-- Nom des fenetres -->
+    <string name="reservation_activity">Réservation</string>
+    <string name="list_workspace_activity">Liste des workspaces</string>
+    
+    
     <!-- Home Activity -->
     <string name="reservations_btn">Mes réservations</string>
     <string name="find_loc_btn">Trouver un emplacement</string>
+    
+    
+    <!-- Reservation Activity -->
+    <string name="type_workspace">Type workspace : </string>
+    <string name="adresse_workspace">Adresse : </string>
+    <string name="seats_number_workspace">Nombre de places assises : </string>
+    <string name="email_admin_workspace">Email de l\'admin : </string>
+    <string name="prix">Prix : </string>
+    <string name="description">Description : </string>
+    <string name="reserver_btn">Réserver</string>
+    
+    <!-- Autres -->
+    <string name="empty">Empty</string>
+    <string name="mettre_en_favori">Mettre en favori</string>
 
 </resources>

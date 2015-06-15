@@ -1638,6 +1638,18 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020033;
     }
     public static final class id {
+        public static final int AdresseWorkspace=0x7f09004a;
+        public static final int AdresseWorkspaceRes=0x7f09004f;
+        public static final int DescriptionWorkspace=0x7f090053;
+        public static final int DescriptionWorkspaceRes=0x7f090054;
+        public static final int EmailAdminWorkspace=0x7f09004c;
+        public static final int EmailAdminWorkspaceRes=0x7f090051;
+        public static final int PriceWorkspace=0x7f09004d;
+        public static final int PriceWorkspaceRes=0x7f090052;
+        public static final int SeatsNumberWorkspace=0x7f09004b;
+        public static final int SeatsNumberWorkspaceRes=0x7f090050;
+        public static final int TypeWorkspace=0x7f090049;
+        public static final int TypeWorkspaceRes=0x7f09004e;
         public static final int action_bar=0x7f090031;
         public static final int action_bar_activity_content=0x7f090003;
         public static final int action_bar_container=0x7f090030;
@@ -1651,7 +1663,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f090048;
+        public static final int action_settings=0x7f09005b;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
@@ -1661,6 +1673,7 @@ containing a value of this type.
         public static final int default_activity_button=0x7f090024;
         public static final int dialog=0x7f090019;
         public static final int disableHome=0x7f09000d;
+        public static final int dispoDesk=0x7f090057;
         public static final int dropdown=0x7f09001a;
         public static final int edit_query=0x7f090033;
         public static final int end=0x7f09001c;
@@ -1674,15 +1687,21 @@ containing a value of this type.
         public static final int ifRoom=0x7f090016;
         public static final int image=0x7f090023;
         public static final int listMode=0x7f09000a;
+        public static final int listWorkspace=0x7f090048;
         public static final int list_item=0x7f090025;
         public static final int location_spinner=0x7f090040;
+        public static final int makeFavourite=0x7f09005c;
         public static final int max_price_spinner=0x7f090044;
         public static final int middle=0x7f09001d;
         public static final int min_price_spinner=0x7f090043;
         public static final int minimum_seats_spinner=0x7f090042;
+        public static final int nbPlacesDesk=0x7f090058;
+        public static final int nbReservationDesk=0x7f090059;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
+        public static final int placeDesk=0x7f090056;
+        public static final int priceDesk=0x7f09005a;
         public static final int product_type_spinner=0x7f09003f;
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
@@ -1707,6 +1726,7 @@ containing a value of this type.
         public static final int submit_area=0x7f09003c;
         public static final int tabMode=0x7f09000c;
         public static final int title=0x7f090027;
+        public static final int typeDesk=0x7f090055;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
         public static final int withText=0x7f090018;
@@ -1763,10 +1783,14 @@ containing a value of this type.
         public static final int abc_simple_dropdown_hint=0x7f030016;
         public static final int find_location_activity=0x7f030017;
         public static final int home_activity=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int list_workspace_activity=0x7f030019;
+        public static final int reservation_activity=0x7f03001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
+        public static final int workspace_row=0x7f03001c;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
+        public static final int menu_workspace_longclick_item=0x7f0d0001;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1826,15 +1850,32 @@ containing a value of this type.
          */
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
         public static final int action_settings=0x7f0a0012;
+        public static final int adresse_workspace=0x7f0a0019;
         public static final int app_name=0x7f0a0010;
-        public static final int find_loc_btn=0x7f0a0015;
+        public static final int description=0x7f0a001d;
+        public static final int email_admin_workspace=0x7f0a001b;
+        /**  Autres 
+         */
+        public static final int empty=0x7f0a001f;
+        public static final int find_loc_btn=0x7f0a0017;
         public static final int hello_world=0x7f0a0011;
+        public static final int list_workspace_activity=0x7f0a0015;
+        public static final int mettre_en_favori=0x7f0a0020;
+        public static final int prix=0x7f0a001c;
+        /**  Nom des fenetres 
+         */
+        public static final int reservation_activity=0x7f0a0014;
         /**  Home Activity 
          */
-        public static final int reservations_btn=0x7f0a0014;
+        public static final int reservations_btn=0x7f0a0016;
+        public static final int reserver_btn=0x7f0a001e;
         /**  Main Activity 
          */
         public static final int search_btn=0x7f0a0013;
+        public static final int seats_number_workspace=0x7f0a001a;
+        /**  Reservation Activity 
+         */
+        public static final int type_workspace=0x7f0a0018;
     }
     public static final class style {
         /** 
@@ -1846,17 +1887,6 @@ containing a value of this type.
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
-
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f0b00eb;
         /**  Application theme. 

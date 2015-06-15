@@ -22,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+            android:name=".ReservationActivity"
+            android:label="@string/reservation_activity" />
+        <activity 
+            android:name=".ListWorkspaceActivity"
+            android:label="@string/list_workspace_activity" />
     </application>
     
     <uses-permission android:name="android.permission.INTERNET" />
