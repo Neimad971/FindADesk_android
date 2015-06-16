@@ -44,19 +44,27 @@ public class FindLocationActivity extends ActionBarActivity {
 		produtSpinner.setAdapter(adapter);
 		
 		locationSpinner = (Spinner) findViewById(R.id.location_spinner);
-		locationSpinner.setAdapter(adapter);
+		ArrayAdapter<CharSequence> adapterLoc = ArrayAdapter.createFromResource(this, R.array.city_data, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		locationSpinner.setAdapter(adapterLoc);
 		
 		fromSpinner = (Spinner) findViewById(R.id.from_spinner);
 		fromSpinner.setAdapter(adapter);
 		
 		minSeatsSpinner = (Spinner) findViewById(R.id.minimum_seats_spinner);
-		minSeatsSpinner.setAdapter(adapter);
+		ArrayAdapter<CharSequence> adapterSeats = ArrayAdapter.createFromResource(this, R.array.min_seats_data, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		minSeatsSpinner.setAdapter(adapterSeats);
 		
 		minPriceSpinner = (Spinner) findViewById(R.id.min_price_spinner);
-		minPriceSpinner.setAdapter(adapter);
+		ArrayAdapter<CharSequence> adapterMinPrice = ArrayAdapter.createFromResource(this, R.array.min_price_data, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		minPriceSpinner.setAdapter(adapterMinPrice);
 		
 		maxPriceSpinner = (Spinner) findViewById(R.id.max_price_spinner);
-		maxPriceSpinner.setAdapter(adapter);
+		ArrayAdapter<CharSequence> adapterMaxPrice = ArrayAdapter.createFromResource(this, R.array.max_price_data, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		maxPriceSpinner.setAdapter(adapterMaxPrice);
 		
 		//new AsyncTaskParseJson().execute();
 	}

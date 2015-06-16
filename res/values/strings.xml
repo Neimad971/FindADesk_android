@@ -5,14 +5,42 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     
-    <!-- Main Activity -->
+    <!-- Find Location Activity -->
     <string name="search_btn">Rechercher</string>
     
+    <string-array name="city_data">
+        <item>Paris</item>
+        <item>Créteil</item>
+        <item>Nanterre</item>
+    </string-array>
+    
     <string-array name="product_type_data">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
+        <item>Bureau</item>
+        <item>Salle de réunion</item>
+    </string-array>
+    
+    <string-array name="min_seats_data">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4 et plus</item>
+    </string-array>
+    
+    <string-array name="min_price_data">
+        <item>10 €</item>
+        <item>20 €</item>
+        <item>30 €</item>
+        <item>40 €</item>
+        <item>40€ et plus</item>
+    </string-array>
+    
+    <string-array name="max_price_data">
+        <item>10 €</item>
+        <item>20 €</item>
+        <item>30 €</item>
+        <item>40 €</item>
+        <item>40€ et plus</item>
     </string-array>
     
     

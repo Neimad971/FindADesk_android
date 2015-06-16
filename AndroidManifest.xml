@@ -28,6 +28,9 @@
         <activity 
             android:name=".ListWorkspaceActivity"
             android:label="@string/list_workspace_activity" />
+        
+        <activity android:name=".FindLocationActivity"></activity>
+        
     </application>
     
     <uses-permission android:name="android.permission.INTERNET" />
