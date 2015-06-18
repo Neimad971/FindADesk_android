@@ -2,11 +2,16 @@ package fr.esgi.findadesk;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import fr.esgi.utils.Workspace;
 import fr.esgi.utils.WorkspaceListAdaptor;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Int2;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,12 +27,47 @@ public class ListWorkspaceActivity extends Activity {
 
 	private ListView myListView;
 	private ArrayList<Workspace> listWorkspace = new ArrayList<Workspace>();
+	
+	private String jsonData;
+	private JSONArray workspaceJsonArray;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_workspace_activity);
 		
+		Intent intent = getIntent();
+		jsonData = intent.getStringExtra("workspacesList");
+		
+		try {
+			workspaceJsonArray = new JSONArray(jsonData);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+		
 		myListView = (ListView) findViewById(R.id.listWorkspace);
+		
+		for (int i = 0; i < workspaceJsonArray.length(); i++) {
+			JSONObject jsonobject = null;
+			try {
+				jsonobject = (JSONObject) workspaceJsonArray.get(i);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			listWorkspace.add(new Workspace(1, Integer.valueOf(jsonobject
+					.optString("typeId")), Float.valueOf(jsonobject
+					.optString("price")), Integer.valueOf(jsonobject
+					.optString("seatsNumber")), jsonobject
+					.optString("description"), jsonobject
+					.optString("userEmail"), jsonobject.optString("address"),
+					jsonobject.optString("city"), Integer.valueOf(jsonobject
+							.optString("zipCode")), jsonobject
+							.optString("country"), Float.valueOf(jsonobject
+							.optString("longitude")), Float.valueOf(jsonobject
+							.optString("latitude")), 2, true));
+		}
+		
 		listWorkspace.add(new Workspace(1,1,Float.valueOf(200),10,"Description","email","rue de paris","Paris",75000,"France",Float.valueOf(10),Float.valueOf(10),2,true));
 //		listWorkspace.add(new Workspace(2,1,200.0,10,"Description","email","rue de paris","Paris",75000,"France",10.0,10.0,2,false));
 		myListView.setAdapter(new WorkspaceListAdaptor(getApplicationContext(), listWorkspace));

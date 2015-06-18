@@ -1,36 +1,40 @@
 package fr.esgi.findadesk;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import fr.esgi.utils.JSONParser;
 
 public class FindLocationActivity extends ActionBarActivity {
 
-	/*
-	// URL to get JSON Array
-	private static String url = "http://localhost:8080/users";
-
-	// JSON Node Names
-	private static final String TAG_USER = "user";
-	private static final String TAG_ID = "id";
-	private static final String TAG_FIRSTNAME = "firstName";
-	private static final String TAG_LASTNAME = "lastName";
-	private static final String TAG_ADDRESS = "address";
-	private static final String TAG_EMAIL = "email";
-	private static final String TAG_PWD = "password";
-
-	JSONArray user = null;
-	*/
-	
 	private Spinner produtSpinner;
 	private Spinner locationSpinner;
 	private Spinner fromSpinner;
 	private Spinner minSeatsSpinner;
 	private Spinner minPriceSpinner;
 	private Spinner maxPriceSpinner;
+	
+	private String productType;
+	private String location;
+	private String fromDate;
+	private String minimumSeats;
+	private String minimumPrice;
+	private String maxPrice;
+	
+	private Button searchButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,22 @@ public class FindLocationActivity extends ActionBarActivity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		maxPriceSpinner.setAdapter(adapterMaxPrice);
 		
-		//new AsyncTaskParseJson().execute();
+		searchButton = (Button) findViewById(R.id.search_btn);
+		
+		searchButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+				productType = String.valueOf(produtSpinner.getSelectedItemPosition())+1;
+				location = locationSpinner.getSelectedItem().toString();
+				fromDate = fromSpinner.getSelectedItem().toString();
+				minimumSeats = minSeatsSpinner.getSelectedItem().toString();
+				minimumPrice = minPriceSpinner.getSelectedItem().toString();
+				maxPrice = maxPriceSpinner.getSelectedItem().toString();
+				
+				new AsyncTaskParseJson().execute(productType, location, minimumSeats, minimumPrice, maxPrice);
+			}
+		});
 	}
 
 	@Override
@@ -88,44 +107,30 @@ public class FindLocationActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	/*
+	
 	public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
-
-		final String TAG = "MainActivity.java";
-
-		// set your json string url here
-		String url = "http://10.0.2.2:8080/users";
-
-		// contacts JSONArray
-		JSONArray dataJsonArr = null;
-
-		@Override
-		protected void onPreExecute() {
-		}
+		JSONArray json = null;
 
 		@Override
 		protected String doInBackground(String... arg0) {
+			String url = "http://10.0.2.2:8080/workspacesListing/" + arg0[0]
+					+ "/" + arg0[1] + "/" + arg0[2] + "/"
+					+ arg0[3].replace(" €", "") + "/"
+					+ arg0[4].replace(" €", "");
 
-			try {
+			JSONParser jParser = new JSONParser();
 
-				// instantiate our json parser
-				JSONParser jParser = new JSONParser();
-
-				// get json string from url
-				JSONArray json = jParser.getJSONFromUrl(url);
-				
-				Log.i(TAG, json.getString(0));
-				
-
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-
+			json = jParser.getJSONFromUrl(url);
+			resultFromAsyncTask(json);
+			
 			return null;
 		}
-
-		@Override
-		protected void onPostExecute(String strFromDoInBg) {
-		}
-	}*/
+	}
+	
+	private void resultFromAsyncTask(JSONArray data)
+	{
+		Intent i = new Intent(getApplicationContext(), ListWorkspaceActivity.class);
+		i.putExtra("workspacesList", data.toString());
+		startActivity(i);
+	}
 }
