@@ -43,6 +43,12 @@
         <item>40€ et plus</item>
     </string-array>
     
+    <string name="product_type_text">Type de produit : </string>
+    <string name="location_spinner_text">Lieu : </string>
+    <string name="from_spinner_text">À partir de : </string>
+    <string name="min_seats_text">Nombre de places minimum : </string>
+    <string name="min_price_text">Prix minimum : </string>
+    <string name="max_price_text">Prix maximum : </string>
     
     <!-- Nom des fenetres -->
     <string name="reservation_activity">Réservation</string>
