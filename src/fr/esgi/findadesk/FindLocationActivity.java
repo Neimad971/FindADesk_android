@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -127,7 +126,6 @@ public class FindLocationActivity extends ActionBarActivity {
 	private void resultFromAsyncTask(JSONArray data)
 	{
 		Intent i;
-		Log.i("FindLocationActivity", String.valueOf(data.length()));
 		if(data.length() == 0)
 		{
 			i = new Intent(getApplicationContext(), NoWorkspacesActivity.class);

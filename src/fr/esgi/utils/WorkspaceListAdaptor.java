@@ -1,16 +1,17 @@
 package fr.esgi.utils;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-import fr.esgi.findadesk.R;
-import fr.esgi.findadesk.R.id;
-import fr.esgi.findadesk.R.layout;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import fr.esgi.findadesk.R;
 
 public class WorkspaceListAdaptor extends BaseAdapter {
 
@@ -85,7 +86,23 @@ public class WorkspaceListAdaptor extends BaseAdapter {
 		int nbReservation = listWorkspace.get(position).getNbReservation();
 		
 		holderDesk.idView = idWorkspace;
-		holderDesk.typeView.setText(String.valueOf(idTypeWorkspace));
+		
+		String[] productType = context.getResources().getStringArray(R.array.product_type_data);
+		Map<Integer, String> producTypeMap = new HashMap<Integer, String>();
+		
+		for (int i = 0; i < productType.length; i++) {
+			producTypeMap.put(i, productType[i]);
+		}
+		
+		Iterator it = producTypeMap.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        if((Integer.parseInt(pair.getKey().toString())) == idTypeWorkspace-1)
+	        {
+	        	holderDesk.typeView.setText(pair.getValue().toString());
+	        }
+	    }
+		
 		holderDesk.cityView.setText(cityWorkspace);
 		if(dispoWorkspace)
 			holderDesk.dispoView.setText("Disponible");
@@ -94,7 +111,7 @@ public class WorkspaceListAdaptor extends BaseAdapter {
 		
 		holderDesk.seatsNumberView.setText(String.valueOf(seatsNumberWorkspace));
 		holderDesk.nbReservationView.setTag(String.valueOf(nbReservation));
-		holderDesk.priceView.setText(String.valueOf(priceWorkspace) + " €");
+		holderDesk.priceView.setText(String.valueOf(priceWorkspace) + " ï¿½");
 		
 		holderDesk.workspace = new Workspace(idWorkspace, idTypeWorkspace, priceWorkspace, seatsNumberWorkspace, cityWorkspace,nbReservation,dispoWorkspace);
 	  return convertView;

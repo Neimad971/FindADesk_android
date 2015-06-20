@@ -55,7 +55,8 @@ public class ListWorkspaceActivity extends Activity {
 				e.printStackTrace();
 			}
 			
-			listWorkspace.add(new Workspace(1, Integer.valueOf(jsonobject
+			listWorkspace.add(new Workspace(Integer.valueOf(jsonobject
+					.optString("workspaceId")), Integer.valueOf(jsonobject
 					.optString("typeId")), Float.valueOf(jsonobject
 					.optString("price")), Integer.valueOf(jsonobject
 					.optString("seatsNumber")), jsonobject
