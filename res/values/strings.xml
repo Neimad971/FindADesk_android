@@ -66,5 +66,9 @@
     <!-- Autres -->
     <string name="empty">Empty</string>
     <string name="mettre_en_favori">Mettre en favori</string>
-
+    
+    <!-- No Workspaces Activity -->
+	<string name="no_workspaces">Aucune offre ne correspond à vos critères</string>
+	<string name="go_back_message">Retour</string>
+	
 </resources>

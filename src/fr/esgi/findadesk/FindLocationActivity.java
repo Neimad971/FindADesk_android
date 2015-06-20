@@ -1,7 +1,6 @@
 package fr.esgi.findadesk;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -11,8 +10,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -129,8 +126,16 @@ public class FindLocationActivity extends ActionBarActivity {
 	
 	private void resultFromAsyncTask(JSONArray data)
 	{
-		Intent i = new Intent(getApplicationContext(), ListWorkspaceActivity.class);
-		i.putExtra("workspacesList", data.toString());
-		startActivity(i);
+		Intent i;
+		Log.i("FindLocationActivity", String.valueOf(data.length()));
+		if(data.length() == 0)
+		{
+			i = new Intent(getApplicationContext(), NoWorkspacesActivity.class);
+			startActivityForResult(i, 1);
+		} else {
+			i = new Intent(getApplicationContext(), ListWorkspaceActivity.class);
+			i.putExtra("workspacesList", data.toString());
+			startActivity(i);
+		}
 	}
 }
