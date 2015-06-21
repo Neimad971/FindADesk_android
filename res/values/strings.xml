@@ -53,6 +53,8 @@
     <!-- Nom des fenetres -->
     <string name="reservation_activity">Réservation</string>
     <string name="list_workspace_activity">Liste des workspaces</string>
+	<string name="find_location_activity">Trouver un local</string>
+	<string name="no_workspaces_activity">Aucun résultat</string>
     
     
     <!-- Home Activity -->
