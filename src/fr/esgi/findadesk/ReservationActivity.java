@@ -2,6 +2,7 @@ package fr.esgi.findadesk;
 
 import fr.esgi.utils.Workspace;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -13,32 +14,18 @@ public class ReservationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.reservation_activity);
 		
-//		int idWorkspace = (int) getIntent().getExtras().get("idWorkspace");
-		LoadCurrentWorkspace();
+		Workspace currentWorkspace = (Workspace)getIntent().getSerializableExtra("CurrentWorkspaceBundle");
+		if(currentWorkspace != null)
+			LoadCurrentWorkspace(currentWorkspace);
+		else
+		{
+			Intent intent = new Intent(ReservationActivity.this, NoWorkspacesActivity.class);
+			startActivity(intent);
+		}
 	}
 	
-	private void LoadCurrentWorkspace()
-	{
-		Workspace workspace = new Workspace();
-		// Se conneter à la base et recuperer le workspace courant
-		workspace.setAddressWorkspace("2 rue de Paris");
-		workspace.setIdTypeWorkspace(1);
-		workspace.setSeatsNumberWorkspace(100);
-		workspace.setEmailAdmin("toto@toto.rr");
-		workspace.setPriceWorkspace(Float.valueOf(200));
-		workspace.setDescriptionWorkspace("tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau"
-				+ "tres bon bureau");	
-		
+	private void LoadCurrentWorkspace(Workspace workspace)
+	{		
 		TextView txvAdresse = (TextView) findViewById(R.id.AdresseWorkspaceRes);
 		txvAdresse.setText(workspace.getAddressWorkspace());
 		
@@ -56,5 +43,11 @@ public class ReservationActivity extends Activity {
 		
 		TextView txvDescription = (TextView) findViewById(R.id.DescriptionWorkspaceRes);
 		txvDescription.setText(workspace.getDescriptionWorkspace());
+	}
+	
+	public void BtnReserverOnClick()
+	{
+		//todo ajouter le code de reservation, sauvegarder une nouvelle resa
+		//et rediriger vers l'activity de confirmation
 	}
 }

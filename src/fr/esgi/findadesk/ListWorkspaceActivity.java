@@ -105,8 +105,9 @@ public class ListWorkspaceActivity extends Activity {
 	        Intent intent = new Intent(ListWorkspaceActivity.this, ReservationActivity.class);
 			
 			Workspace currentWorkspace = (Workspace) adapter.getItemAtPosition(pos);
-			int idCurrentWorkspace = currentWorkspace.getIdWorkspace();
-			intent.putExtra("idDesk", idCurrentWorkspace);
+			Bundle b = new Bundle();
+			b.putSerializable("CurrentWorkspaceBundle", currentWorkspace);
+			intent.putExtras(b);
 			startActivity(intent);
 	    }
 	};

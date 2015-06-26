@@ -1,7 +1,13 @@
 package fr.esgi.utils;
 
-public class Workspace {
+import java.io.Serializable;
 
+public class Workspace implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idWorkspace;
 	private int idTypeWorkspace;
 	private Float priceWorkspace;
