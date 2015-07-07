@@ -84,4 +84,7 @@
 	<string name="date_begin">Début : </string>
 	<string name="date_end">Fin : </string>
 	
+	<!-- Login Activity -->
+	<string name="login_btn">Login</string>
+	
 </resources>

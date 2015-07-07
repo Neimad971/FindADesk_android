@@ -15,6 +15,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import android.util.Log;
 
@@ -36,10 +37,8 @@ public class JSONParser {
 		try {
 			// defaultHttpClient
 			DefaultHttpClient httpClient = new DefaultHttpClient();
-//			HttpPost httpPost = new HttpPost(url);
 			HttpGet httpGet = new HttpGet(url);
-
-//			HttpResponse httpResponse = httpClient.execute(httpPost);
+			
 			HttpResponse httpResponse = httpClient.execute(httpGet);
 			HttpEntity httpEntity = httpResponse.getEntity();
 			is = httpEntity.getContent();
@@ -65,18 +64,13 @@ public class JSONParser {
 		} catch (Exception e) {
 			Log.e("Buffer Error", "Error converting result " + e.toString());
 		}
-
-		// try parse the string to a JSON object
+		
 		try {
 			jArr = new JSONArray(json);
-//			jObj = new JSONObject(json);
 		} catch (JSONException e) {
 			Log.e("JSON Parser", "Error parsing data " + e.toString());
 		}
 
-		// return JSON String
-//		return jObj;
 		return jArr;
-
 	}
 }

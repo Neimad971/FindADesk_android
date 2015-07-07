@@ -1,0 +1,75 @@
+package fr.esgi.findadesk;
+
+import org.json.JSONArray;
+
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import fr.esgi.utils.JSONParser;
+
+public class LoginActivity extends ActionBarActivity{
+
+	private EditText loginField;
+	private EditText passwordField;
+	private Button loginBtn;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.login_activity);
+		
+		loginField = (EditText) findViewById(R.id.login_field);
+		passwordField = (EditText) findViewById(R.id.password_field);
+		loginBtn = (Button) findViewById(R.id.login_btn);
+		
+		loginBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				new AsyncTaskParseJson().execute(loginField.getText().toString(), passwordField.getText().toString());
+			}
+		});
+	}
+	
+	public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
+		JSONArray json = null;
+
+		@Override
+		protected String doInBackground(String... arg0) {
+			String url = "http://10.0.2.2:8080/users/" + arg0[0]
+					+ "/" + arg0[1];
+
+			JSONParser jParser = new JSONParser();
+
+			json = jParser.getJSONFromUrl(url);
+			resultFromAsyncTask(json);
+			
+			return null;
+		}
+	}
+	
+	private void resultFromAsyncTask(JSONArray data) {
+		
+		if (data.toString().equals("[]")) {
+			runOnUiThread(new Runnable() {
+				public void run() {
+					Toast.makeText(LoginActivity.this, "No matching found!",
+							Toast.LENGTH_LONG).show();
+				}
+			});
+		} else {
+			Intent i;
+			i = new Intent(this.getApplicationContext(), HomeActivity.class);
+			i.putExtra("user", data.toString());
+			startActivity(i);
+		}
+	}
+}
