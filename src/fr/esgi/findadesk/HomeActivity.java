@@ -39,6 +39,15 @@ public class HomeActivity extends ActionBarActivity{
 				startActivity(i);
 			}
 		});
+		
+		myReservations.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), MyReservations.class);
+				startActivity(i);
+			}
+		});
 
 	}
 	

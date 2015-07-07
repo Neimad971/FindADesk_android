@@ -36,6 +36,7 @@
             android:label="@string/find_location_activity" />
         <activity android:name=".NoWorkspacesActivity"
             android:label="@string/no_workspaces_activity" />
+        <activity android:name=".MyReservations" />
     </application>
 
 </manifest>

@@ -69,7 +69,7 @@ public class ListWorkspaceActivity extends Activity {
 							.optString("latitude")), 2, true));
 		}
 		
-		listWorkspace.add(new Workspace(1,1,Float.valueOf(200),10,"Description","email","rue de paris","Paris",75000,"France",Float.valueOf(10),Float.valueOf(10),2,true));
+		//listWorkspace.add(new Workspace(1,1,Float.valueOf(200),10,"Description","email","rue de paris","Paris",75000,"France",Float.valueOf(10),Float.valueOf(10),2,true));
 //		listWorkspace.add(new Workspace(2,1,200.0,10,"Description","email","rue de paris","Paris",75000,"France",10.0,10.0,2,false));
 		myListView.setAdapter(new WorkspaceListAdaptor(getApplicationContext(), listWorkspace));
 		myListView.setOnItemClickListener(itemClickListener);

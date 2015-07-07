@@ -79,4 +79,9 @@
 	<string name="no_workspaces">Aucune offre ne correspond à vos critères</string>
 	<string name="go_back_message">Retour</string>
 	
+	<!-- Customer Reservations -->
+	<string name="office_desc">Bureau : </string>
+	<string name="date_begin">Début : </string>
+	<string name="date_end">Fin : </string>
+	
 </resources>
