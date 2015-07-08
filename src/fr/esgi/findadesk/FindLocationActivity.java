@@ -70,7 +70,7 @@ public class FindLocationActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				
-				productType = String.valueOf(produtSpinner.getSelectedItemPosition())+1;
+				productType = String.valueOf(produtSpinner.getSelectedItemPosition()+1);
 				location = locationSpinner.getSelectedItem().toString();
 				fromDate = fromSpinner.getSelectedItem().toString();
 				minimumSeats = minSeatsSpinner.getSelectedItem().toString();
