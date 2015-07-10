@@ -8,13 +8,14 @@ import android.widget.TextView;
 
 public class ReservationActivity extends Activity {
 
+	private Workspace currentWorkspace;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.reservation_activity);
 		
-		Workspace currentWorkspace = (Workspace)getIntent().getSerializableExtra("CurrentWorkspaceBundle");
+		currentWorkspace = (Workspace)getIntent().getSerializableExtra("CurrentWorkspaceBundle");
 		if(currentWorkspace != null)
 			LoadCurrentWorkspace(currentWorkspace);
 		else
@@ -47,7 +48,13 @@ public class ReservationActivity extends Activity {
 	
 	public void BtnReserverOnClick()
 	{
-		//todo ajouter le code de reservation, sauvegarder une nouvelle resa
-		//et rediriger vers l'activity de confirmation
+//		Pour Mostafa
+		
+		
+//		Intent intent = new Intent(ReservationActivity.this, PaimentActivity.class);
+//		Bundle b = new Bundle();
+//		b.putSerializable("CurrentWorkspaceBundle", currentWorkspace);
+//		intent.putExtras(b);
+//		startActivity(intent);
 	}
 }
