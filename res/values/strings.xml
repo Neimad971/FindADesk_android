@@ -86,5 +86,8 @@
 	
 	<!-- Login Activity -->
 	<string name="login_btn">Login</string>
+	<string name="adresse_email">Adresse email</string>
+	<string name="pwd">Mot de passe</string>
+	<string name="identify_text">Identifiez-vous</string>
 	
 </resources>

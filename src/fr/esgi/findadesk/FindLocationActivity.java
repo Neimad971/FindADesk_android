@@ -9,21 +9,21 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import fr.esgi.utils.JSONParser;
 
 public class FindLocationActivity extends ActionBarActivity {
 
 	private Spinner produtSpinner;
-	private Spinner locationSpinner;
-	private Spinner fromSpinner;
-	private Spinner minSeatsSpinner;
-	private Spinner minPriceSpinner;
-	private Spinner maxPriceSpinner;
+
+	private EditText locationSpinner;
+	private EditText minSeatsSpinner;
+	private EditText minPriceSpinner;
+	private EditText maxPriceSpinner;
 	
 	private String productType;
 	private String location;
-	private String fromDate;
 	private String minimumSeats;
 	private String minimumPrice;
 	private String maxPrice;
@@ -41,41 +41,22 @@ public class FindLocationActivity extends ActionBarActivity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		produtSpinner.setAdapter(adapter);
 		
-		locationSpinner = (Spinner) findViewById(R.id.location_spinner);
-		ArrayAdapter<CharSequence> adapterLoc = ArrayAdapter.createFromResource(this, R.array.city_data, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		locationSpinner.setAdapter(adapterLoc);
-		
-		fromSpinner = (Spinner) findViewById(R.id.from_spinner);
-		fromSpinner.setAdapter(adapter);
-		
-		minSeatsSpinner = (Spinner) findViewById(R.id.minimum_seats_spinner);
-		ArrayAdapter<CharSequence> adapterSeats = ArrayAdapter.createFromResource(this, R.array.min_seats_data, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		minSeatsSpinner.setAdapter(adapterSeats);
-		
-		minPriceSpinner = (Spinner) findViewById(R.id.min_price_spinner);
-		ArrayAdapter<CharSequence> adapterMinPrice = ArrayAdapter.createFromResource(this, R.array.min_price_data, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		minPriceSpinner.setAdapter(adapterMinPrice);
-		
-		maxPriceSpinner = (Spinner) findViewById(R.id.max_price_spinner);
-		ArrayAdapter<CharSequence> adapterMaxPrice = ArrayAdapter.createFromResource(this, R.array.max_price_data, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		maxPriceSpinner.setAdapter(adapterMaxPrice);
-		
+		locationSpinner = (EditText) findViewById(R.id.location_spinner);
+		minSeatsSpinner = (EditText) findViewById(R.id.minimum_seats_spinner);
+		minPriceSpinner = (EditText) findViewById(R.id.min_price_spinner);
+		maxPriceSpinner = (EditText) findViewById(R.id.max_price_spinner);
+	
 		searchButton = (Button) findViewById(R.id.search_btn);
 		
 		searchButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				
-				productType = String.valueOf(produtSpinner.getSelectedItemPosition()+1);
-				location = locationSpinner.getSelectedItem().toString();
-				fromDate = fromSpinner.getSelectedItem().toString();
-				minimumSeats = minSeatsSpinner.getSelectedItem().toString();
-				minimumPrice = minPriceSpinner.getSelectedItem().toString();
-				maxPrice = maxPriceSpinner.getSelectedItem().toString();
+				productType = String.valueOf(produtSpinner.getSelectedItemPosition())+1;
+				location = locationSpinner.getText().toString();
+				minimumSeats = minSeatsSpinner.getText().toString();
+				minimumPrice = minPriceSpinner.getText().toString();
+				maxPrice = maxPriceSpinner.getText().toString();
 				
 				new AsyncTaskParseJson().execute(productType, location, minimumSeats, minimumPrice, maxPrice);
 			}
@@ -88,15 +69,14 @@ public class FindLocationActivity extends ActionBarActivity {
 		@Override
 		protected String doInBackground(String... arg0) {
 			String url = "http://10.0.2.2:8080/workspacesListing/" + arg0[0]
-					+ "/" + arg0[1] + "/" + arg0[2] + "/"
-					+ arg0[3].replace(" €", "") + "/"
-					+ arg0[4].replace(" €", "");
+					+ "/" + arg0[1] + "/" + arg0[2] + "/" + arg0[3] + "/"
+					+ arg0[4];
 
 			JSONParser jParser = new JSONParser();
 
 			json = jParser.getJSONFromUrl(url);
 			resultFromAsyncTask(json);
-			
+
 			return null;
 		}
 	}
