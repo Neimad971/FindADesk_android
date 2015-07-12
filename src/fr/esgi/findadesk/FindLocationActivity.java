@@ -29,6 +29,7 @@ public class FindLocationActivity extends ActionBarActivity {
 	private String maxPrice;
 	
 	private Button searchButton;
+	private Button searchButtonMaps;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class FindLocationActivity extends ActionBarActivity {
 		maxPriceSpinner = (EditText) findViewById(R.id.max_price_spinner);
 	
 		searchButton = (Button) findViewById(R.id.search_btn);
+		searchButtonMaps = (Button) findViewById(R.id.search_btn_maps);
 		
 		searchButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -59,6 +61,15 @@ public class FindLocationActivity extends ActionBarActivity {
 				maxPrice = maxPriceSpinner.getText().toString();
 				
 				new AsyncTaskParseJson().execute(productType, location, minimumSeats, minimumPrice, maxPrice);
+			}
+		});
+		
+		searchButtonMaps.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), MapActivity.class);
+				startActivity(i);
 			}
 		});
 	}

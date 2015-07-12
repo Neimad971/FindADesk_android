@@ -82,12 +82,23 @@
         android:layout_below="@+id/max_price_text" />
 
     <Button
-        android:id="@+id/search_btn"
+        android:id="@+id/search_btn_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@+id/max_price_spinner"
+        android:layout_marginBottom="23dp"
+        android:text="@string/search_btn_maps" />
+
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/search_btn_maps"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/search_btn_maps"
+        android:layout_marginBottom="7dp"
         android:text="@string/search_btn" />
 
 </RelativeLayout>

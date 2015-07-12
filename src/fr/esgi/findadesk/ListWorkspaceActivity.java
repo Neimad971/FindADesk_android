@@ -6,22 +6,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.esgi.utils.Workspace;
-import fr.esgi.utils.WorkspaceListAdaptor;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Int2;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import fr.esgi.utils.Workspace;
+import fr.esgi.utils.WorkspaceListAdaptor;
 
 public class ListWorkspaceActivity extends Activity {
 
