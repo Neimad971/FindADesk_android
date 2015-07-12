@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -20,11 +19,21 @@ public class LoginActivity extends ActionBarActivity{
 	private EditText passwordField;
 	private Button loginBtn;
 	
+	private JSONArray userJson;
+	private Boolean isLogged = false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.login_activity);
+		
+		if (isLogged == true) {
+			Intent i;
+			i = new Intent(this.getApplicationContext(), HomeActivity.class);
+			i.putExtra("user", userJson.toString());
+			startActivity(i);
+		}
 		
 		loginField = (EditText) findViewById(R.id.login_field);
 		passwordField = (EditText) findViewById(R.id.password_field);
@@ -34,7 +43,18 @@ public class LoginActivity extends ActionBarActivity{
 			
 			@Override
 			public void onClick(View v) {
-				new AsyncTaskParseJson().execute(loginField.getText().toString(), passwordField.getText().toString());
+
+				String sLogin = loginField.getText().toString();
+				String sPassword = passwordField.getText().toString();
+
+				if (sLogin.matches("") && sPassword.matches("")) {
+					Toast.makeText(getApplicationContext(),
+							"Veuillez remplir tous les champs",
+							Toast.LENGTH_LONG).show();
+				} else {
+					new AsyncTaskParseJson().execute(loginField.getText()
+							.toString(), passwordField.getText().toString());
+				}
 			}
 		});
 	}
@@ -57,7 +77,6 @@ public class LoginActivity extends ActionBarActivity{
 	}
 	
 	private void resultFromAsyncTask(JSONArray data) {
-		
 		if (data.toString().equals("[]")) {
 			runOnUiThread(new Runnable() {
 				public void run() {
@@ -66,6 +85,9 @@ public class LoginActivity extends ActionBarActivity{
 				}
 			});
 		} else {
+			userJson = data;
+			isLogged = true;
+			
 			Intent i;
 			i = new Intent(this.getApplicationContext(), HomeActivity.class);
 			i.putExtra("user", data.toString());
