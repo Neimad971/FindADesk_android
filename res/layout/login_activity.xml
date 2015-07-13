@@ -55,4 +55,14 @@
         android:text="@string/identify_text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/subscription_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/login_btn"
+        android:layout_marginBottom="18dp"
+        android:text="@string/subscription_btn" />
+
 </RelativeLayout>

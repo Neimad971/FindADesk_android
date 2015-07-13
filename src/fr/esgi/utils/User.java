@@ -25,6 +25,19 @@ public class User {
 		this.company = company;
 	}
 	
+	
+
+	public User(String firstName, String lastName, String address,
+			String email, String password, String phoneNumber, String company) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+		this.company = company;
+	}
+
 	public Integer getUserId() {
 		return userId;
 	}

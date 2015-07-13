@@ -90,5 +90,15 @@
 	<string name="adresse_email">Adresse email</string>
 	<string name="pwd">Mot de passe</string>
 	<string name="identify_text">Identifiez-vous</string>
+	<string name="subscription_btn">S\'inscrire</string>
+	
+	<!-- Subscription Activity -->
+	<string name="lastname">Nom</string>
+	<string name="firstname">Prénom</string>
+	<string name="adresse">Adresse</string>
+	<string name="phone">Téléphone</string>
+	<string name="company">Société</string>
+	<string name="email">Adresse email</string>
+	<string name="password">Mot de passe</string>
 	
 </resources>

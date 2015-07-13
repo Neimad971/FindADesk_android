@@ -1,6 +1,8 @@
 package fr.esgi.findadesk;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -18,9 +20,11 @@ public class LoginActivity extends ActionBarActivity{
 	private EditText loginField;
 	private EditText passwordField;
 	private Button loginBtn;
+	private Button subscriptionBtn;
 	
 	private JSONArray userJson;
 	private Boolean isLogged = false;
+	private String userId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,12 @@ public class LoginActivity extends ActionBarActivity{
 			startActivity(i);
 		}
 		
+		userId = null;
+		
 		loginField = (EditText) findViewById(R.id.login_field);
 		passwordField = (EditText) findViewById(R.id.password_field);
 		loginBtn = (Button) findViewById(R.id.login_btn);
+		subscriptionBtn = (Button) findViewById(R.id.subscription_btn);
 		
 		loginBtn.setOnClickListener(new OnClickListener() {
 			
@@ -57,6 +64,31 @@ public class LoginActivity extends ActionBarActivity{
 				}
 			}
 		});
+		
+		subscriptionBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), SubscriptionActivity.class);
+				startActivityForResult(i, 2);
+			}
+		});
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if(requestCode==2)  
+        {  
+           userId = data.getStringExtra("userId");
+           isLogged = data.getBooleanExtra("isLogged", false);
+        }
+		
+		Intent i;
+		i = new Intent(this.getApplicationContext(), HomeActivity.class);
+		i.putExtra("userId", userId);
+		startActivity(i);
 	}
 	
 	public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
@@ -88,9 +120,21 @@ public class LoginActivity extends ActionBarActivity{
 			userJson = data;
 			isLogged = true;
 			
+			for (int i = 0; i < data.length(); i++) {
+				JSONObject jsonobject = null;
+				try {
+					jsonobject = (JSONObject) data.get(i);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				
+				userId = jsonobject.optString("userId");
+			}
+			
 			Intent i;
 			i = new Intent(this.getApplicationContext(), HomeActivity.class);
 			i.putExtra("user", data.toString());
+			i.putExtra("userId", userId);
 			startActivity(i);
 		}
 	}

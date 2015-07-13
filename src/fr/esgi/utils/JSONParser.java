@@ -69,6 +69,7 @@ public class JSONParser {
 			jArr = new JSONArray(json);
 		} catch (JSONException e) {
 			Log.e("JSON Parser", "Error parsing data " + e.toString());
+			//jArr = null;
 		}
 
 		return jArr;
