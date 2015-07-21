@@ -10,10 +10,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import fr.esgi.utils.Booking;
 import fr.esgi.utils.CustomerReservationsAdaptor;
@@ -26,6 +33,7 @@ public class MyReservations extends ActionBarActivity{
 	private ListView bookingListView;
 	private JSONArray jsonBookings;
 	private String userId;
+	private ArrayList<Booking> bookings;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +52,7 @@ public class MyReservations extends ActionBarActivity{
 		}
 	
 		bookingListView = (ListView) findViewById(R.id.customer_reservations_list);
-		ArrayList<Booking> bookings = new ArrayList<Booking>();
+		bookings = new ArrayList<Booking>();
 		
 		
 		if (jsonBookings != null) {
@@ -92,6 +100,48 @@ public class MyReservations extends ActionBarActivity{
 		
 		CustomerReservationsAdaptor adapter = new CustomerReservationsAdaptor(bookings, this);
 		bookingListView.setAdapter(adapter);
+		
+		bookingListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+			
+				deleteBooking(String.valueOf(id));
+				
+				return false;
+			}
+		});
+	}
+	
+	public void deleteBooking(String idBooking) {
+		
+		final String id = idBooking;
+		
+		AlertDialog.Builder alert = new AlertDialog.Builder(
+                MyReservations.this);
+        alert.setTitle("Suppression de la réservation");
+        alert.setMessage("Confirmer la suppression");
+        alert.setPositiveButton("OK", new OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            	new AsyncTaskDeleteBooking().execute(id);                            
+                dialog.dismiss();
+                
+                finish();
+                startActivity(getIntent());
+            }
+        });
+        
+        alert.setNegativeButton("Annuler", new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        alert.show();
 	}
 	
 	public class AsyncTaskParseJson extends AsyncTask<String, String, JSONArray> {
@@ -106,6 +156,21 @@ public class MyReservations extends ActionBarActivity{
 			json = jParser.getJSONFromUrl(url);
 			
 			return json;
+		}
+	}
+	
+	public class AsyncTaskDeleteBooking extends AsyncTask<String, String, String> {
+		JSONArray json = null;
+
+		@Override
+		protected String doInBackground(String... arg0) {
+			String url = "http://10.0.2.2:8080/bookings/delete/" + arg0[0];
+			
+			JSONParser jParser = new JSONParser();
+
+			json = jParser.getJSONFromUrl(url);
+			
+			return null;
 		}
 	}
 }

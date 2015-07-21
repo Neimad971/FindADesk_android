@@ -11,7 +11,6 @@ public class ReservationActivity extends Activity {
 	private Workspace currentWorkspace;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.reservation_activity);
 		
