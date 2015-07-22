@@ -84,17 +84,21 @@ public class MyReservations extends ActionBarActivity{
 				SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
 				String bDate = jsonobject.optString("begin");
 				String eDate = jsonobject.optString("end");
+				String bookingDate = jsonobject.optString("bookingDate");
+				Float price = Float.valueOf(jsonobject.optString("price"));
 				
 				Date beginDate = null;
 				Date endDate = null;
+				Date dateBooking = null;
 				try {
 					beginDate = formater.parse(bDate);
 					endDate = formater.parse(eDate);
+					dateBooking = formater.parse(bookingDate);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
 				
-				bookings.add(new Booking(Integer.valueOf(jsonobject.optString("bookingId")), beginDate, endDate, u, w));
+				bookings.add(new Booking(Integer.valueOf(jsonobject.optString("bookingId")), beginDate, endDate, dateBooking, price, u, w));
 			}
 		}
 		
