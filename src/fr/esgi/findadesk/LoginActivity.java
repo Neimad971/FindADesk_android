@@ -112,7 +112,7 @@ public class LoginActivity extends ActionBarActivity{
 		if (data.toString().equals("[]")) {
 			runOnUiThread(new Runnable() {
 				public void run() {
-					Toast.makeText(LoginActivity.this, "No matching found!",
+					Toast.makeText(LoginActivity.this, "Pas de correspondance !",
 							Toast.LENGTH_LONG).show();
 				}
 			});

@@ -1,5 +1,9 @@
 package fr.esgi.findadesk;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import org.json.JSONArray;
 
 import fr.esgi.utils.JSONParser;
@@ -34,10 +38,25 @@ public class ReservationActivity extends Activity {
 	private void LoadCurrentWorkspace(Workspace workspace) {
 		TextView txvAdresse = (TextView) findViewById(R.id.AdresseWorkspaceRes);
 		txvAdresse.setText(workspace.getAddressWorkspace());
-
+		
 		TextView txvIdTypeWorkspace = (TextView) findViewById(R.id.TypeWorkspaceRes);
-		txvIdTypeWorkspace.setText(String.valueOf(workspace
-				.getIdTypeWorkspace()));
+		
+		String[] productType = getApplicationContext().getResources().getStringArray(R.array.product_type_data);
+		Map<Integer, String> producTypeMap = new HashMap<Integer, String>();
+		
+		for (int i = 0; i < productType.length; i++) {
+			producTypeMap.put(i, productType[i]);
+		}
+		
+		Iterator it = producTypeMap.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        if((Integer.parseInt(pair.getKey().toString())) == workspace
+					.getIdTypeWorkspace()-1)
+	        {
+	        	txvIdTypeWorkspace.setText(pair.getValue().toString());
+	        }
+	    }
 
 		TextView txvSeats = (TextView) findViewById(R.id.SeatsNumberWorkspaceRes);
 		txvSeats.setText(String.valueOf(workspace.getSeatsNumberWorkspace()));
