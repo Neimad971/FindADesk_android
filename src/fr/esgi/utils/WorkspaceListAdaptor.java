@@ -99,7 +99,7 @@ public class WorkspaceListAdaptor extends BaseAdapter {
 	        Map.Entry pair = (Map.Entry)it.next();
 	        if((Integer.parseInt(pair.getKey().toString())) == idTypeWorkspace-1)
 	        {
-	        	holderDesk.typeView.setText(pair.getValue().toString());
+	        	holderDesk.typeView.setText("Type : " + pair.getValue().toString());
 	        }
 	    }
 		
@@ -109,9 +109,9 @@ public class WorkspaceListAdaptor extends BaseAdapter {
 		else
 			holderDesk.dispoView.setText("Complet");
 		
-		holderDesk.seatsNumberView.setText(String.valueOf(seatsNumberWorkspace));
+		holderDesk.seatsNumberView.setText("Place(s) : " + String.valueOf(seatsNumberWorkspace));
 		holderDesk.nbReservationView.setTag(String.valueOf(nbReservation));
-		holderDesk.priceView.setText(String.valueOf(priceWorkspace) + " �");
+		holderDesk.priceView.setText(String.valueOf(priceWorkspace) + " €");
 		
 		holderDesk.workspace = new Workspace(idWorkspace, idTypeWorkspace, priceWorkspace, seatsNumberWorkspace, cityWorkspace,nbReservation,dispoWorkspace);
 	  return convertView;
