@@ -20,6 +20,12 @@
         <item>Salle de réunion</item>
     </string-array>
     
+    <string-array name="type_carte">
+        <item>Visa</item>
+        <item>Visa Electron</item>
+        <item>MasterCard</item>
+    </string-array>
+    
     <string-array name="min_seats_data">
         <item>1</item>
         <item>2</item>

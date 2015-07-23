@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class ReservationActivity extends Activity {
 
 	private Workspace currentWorkspace;
+	private String userId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,8 @@ public class ReservationActivity extends Activity {
 
 		currentWorkspace = (Workspace) getIntent().getSerializableExtra(
 				"CurrentWorkspaceBundle");
+		userId = getIntent().getStringExtra("userId");
+		
 		if (currentWorkspace != null)
 			LoadCurrentWorkspace(currentWorkspace);
 		else {
@@ -72,31 +75,16 @@ public class ReservationActivity extends Activity {
 	}
 
 	public void BtnReserverOnClick(View v) {
-		// Pour Mostafa
 
-		// Intent intent = new Intent(ReservationActivity.this,
-		// PaimentActivity.class);
-		// Bundle b = new Bundle();
-		// b.putSerializable("CurrentWorkspaceBundle", currentWorkspace);
-		// intent.putExtras(b);
-		// startActivity(intent);
+		Intent intent = new Intent(ReservationActivity.this,
+		FinalReservationActivity.class);
+		intent.putExtra("userId", userId);
+		Bundle b = new Bundle();
+		currentWorkspace.getIdWorkspace();
+		b.putSerializable("CurrentWorkspaceBundle", currentWorkspace);
+		intent.putExtras(b);
+		startActivity(intent);
 
-		new AsyncTaskBooking().execute("2", "2", "2015-07-22", "2015-07-25", "2015-07-21", "225");
 	}
 
-	public class AsyncTaskBooking extends AsyncTask<String, String, String> {
-		JSONArray json = null;
-
-		@Override
-		protected String doInBackground(String... arg0) {
-			String url = "http://10.0.2.2:8080/bookings/save/" + arg0[0] + "/"
-					+ arg0[1] + "/" + arg0[2] + "/" + arg0[3] + "/" + arg0[4] + "/" + arg0[5];
-
-			JSONParser jParser = new JSONParser();
-
-			json = jParser.getJSONFromUrl(url);
-
-			return null;
-		}
-	}
 }

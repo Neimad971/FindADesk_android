@@ -35,7 +35,12 @@ public class HomeActivity extends ActionBarActivity{
 
 			@Override
 			public void onClick(View v) {
+				
+				Intent intent = getIntent();
+				String userId = intent.getStringExtra("userId");
+				
 				Intent i = new Intent(getApplicationContext(), FindLocationActivity.class);
+				i.putExtra("userId", userId);
 				startActivity(i);
 			}
 		});

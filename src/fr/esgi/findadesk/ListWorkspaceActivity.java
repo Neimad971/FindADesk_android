@@ -99,8 +99,11 @@ public class ListWorkspaceActivity extends Activity {
 		
 	    public void onItemClick(AdapterView<?> adapter, View view, int pos, long itemID) 
 	    {	    	
-	        Intent intent = new Intent(ListWorkspaceActivity.this, ReservationActivity.class);
+	    	Intent i = getIntent();
+			String userId = i.getStringExtra("userId");
 			
+	        Intent intent = new Intent(ListWorkspaceActivity.this, ReservationActivity.class);
+			intent.putExtra("userId", userId);
 			Workspace currentWorkspace = (Workspace) adapter.getItemAtPosition(pos);
 			Bundle b = new Bundle();
 			b.putSerializable("CurrentWorkspaceBundle", currentWorkspace);

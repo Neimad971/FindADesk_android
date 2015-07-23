@@ -54,6 +54,7 @@
         <activity android:name=".HomeActivity"/>
         <activity android:name=".MapActivity"/>
         <activity android:name=".SubscriptionActivity"/>
+        <activity android:name=".FinalReservationActivity"/>
         
         
         <meta-data

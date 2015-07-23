@@ -195,7 +195,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener, 
 
 		@Override
 		protected JSONArray doInBackground(String... arg0) {
-			String url = "http://192.168.0.14:8080/workspaces";
+			String url = "http://192.168.169.1:8080/workspaces";
 
 			JSONParser jParser = new JSONParser();
 

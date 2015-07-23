@@ -100,9 +100,14 @@ public class FindLocationActivity extends ActionBarActivity {
 			i = new Intent(getApplicationContext(), NoWorkspacesActivity.class);
 			startActivityForResult(i, 1);
 		} else {
+			Intent intent = getIntent();
+			String userId = intent.getStringExtra("userId");
+			
 			i = new Intent(getApplicationContext(), ListWorkspaceActivity.class);
+			i.putExtra("userId", userId);
 			i.putExtra("workspacesList", data.toString());
 			startActivity(i);
+			
 		}
 	}
 }
